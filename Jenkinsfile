@@ -12,7 +12,8 @@ pipeline{
                     sh 'chmod +x gradlew'
                     sh 'pwd'
                     sh 'ls -l'
-                    sh '../../gradlew sonarqube'
+                    //sh '../../gradlew sonarqube'
+                    sh 'mvn clean install'
 }
                 } 
             }
