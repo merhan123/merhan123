@@ -2,10 +2,7 @@ pipeline{
     agent any
     stages{
         stage("sonarQube check"){
-            agent{ 
-                docker {
-                    image 'openjdk:11'
-            }}
+            agent any
             steps{
                 script{
                     withSonarQubeEnv(credentialsId: 'sonarPassword') {
