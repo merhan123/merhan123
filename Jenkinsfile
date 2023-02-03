@@ -7,6 +7,9 @@ pipeline{
                 git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
                 sh 'pwd'
                 sh 'ls -l'
+                sh 'which mvn'
+                sh '/opt/maven -version'
+                sh '/opt/mvn -version'
                 sh  'mvn clean install' 
             }
             
