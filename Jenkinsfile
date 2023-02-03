@@ -3,6 +3,9 @@ pipeline{
     stages{
         stage("Build Code"){
             agent any
+            tools{
+                maven 'mvn-default'
+            }
             steps{
                 git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
                 sh 'pwd'
