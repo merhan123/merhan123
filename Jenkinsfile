@@ -37,8 +37,8 @@ pipeline{
                     sh 'mvn sonar:sonar' }
                     timeout(time: 1, unit: 'HOURS' ){
                         def qg = waitforQualityGate()
-                        if (qg.status != 'Ok'){
-                        error "pipeline faliur : $(qg.status)"
+                            if (qg.status != 'Ok'){
+                            error "pipeline faliur : ${qg.status}"
                     }}
                     sh 'mvn clean install'
                     
