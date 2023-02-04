@@ -27,7 +27,7 @@ pipeline{
                 script{
                     withSonarQubeEnv(credentialsId: 'sonarPassword') {
                     sh 'chmod +x gradlew'
-                    sh 'gradle wrapper'
+                    //sh 'gradle wrapper'
                     sh 'pwd'
                     sh 'ls -l'
                     //sh '../../gradlew sonarqube'
