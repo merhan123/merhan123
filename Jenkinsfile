@@ -28,14 +28,19 @@ pipeline{
                 sh 'ls -l'
                 script{
                    // withSonarQubeEnv(credentialsId: 'sonarPassword') {
-                   withSonarQubeEnv(installationName: 'sonarqube') {
+                   withSonarQubeEnv('sonarqube') {
                    // sh 'chmod +x gradlew'
                    // sh 'pwd'
                     //sh 'ls -l'
                     //sh '../../gradlew sonarqube'
                     sh 'chmod +x mvnw'
-                    sh 'mvn wrapper'
-                    sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
+                    sh 'mvn sonar:sonar' }
+                    // timeout(time: 1, unit: 'HOURS' ){
+                    //     def qg = waitforQualityGate()
+                    //     if (qg.status != 'Ok')
+                    // }
+                    
+                 //   sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
 }
                 } 
             }
