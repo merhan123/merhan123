@@ -18,6 +18,8 @@ pipeline{
         }
         stage("sonarQube check"){
             agent any
+            tools{
+                gradle 'gradle-default' }
             steps{
                 git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
                 sh 'pwd'
