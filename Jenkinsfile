@@ -35,10 +35,12 @@ pipeline{
                     //sh '../../gradlew sonarqube'
                     sh 'chmod +x mvnw'
                     sh 'mvn sonar:sonar' }
-                    // timeout(time: 1, unit: 'HOURS' ){
-                    //     def qg = waitforQualityGate()
-                    //     if (qg.status != 'Ok')
-                    // }
+                    timeout(time: 1, unit: 'HOURS' ){
+                        def qg = waitforQualityGate()
+                        if (qg.status != 'Ok'){
+                        error "pipeline faliur : $(qg.status)"
+                    }}
+                    sh 'mvn clean install'
                     
                  //   sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
 }
