@@ -3,14 +3,17 @@ pipeline{
     stages{
         stage("Build Code"){
             agent any
+            // tools{
+            //     maven 'mvn-default'
+            // }
             tools{
-                maven 'mvn-default'
-            }
+                gradle 'gradle-default' }
             steps{
                 git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
                 sh 'pwd'
                 sh 'ls -l'
                // sh  'mvn clean install'
+                sh  'gradle clean install'
                 sh 'ls -l'
                 sh 'ls -l target' 
             }
