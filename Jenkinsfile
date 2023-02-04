@@ -36,7 +36,7 @@ pipeline{
                     sh 'chmod +x mvnw'
                     sh 'mvn sonar:sonar' }
                     timeout(time: 1, unit: 'HOURS' ){
-                        def qg = waitforQualityGate()
+                        def qg = waitForQualityGate()
                             if (qg.status != 'Ok'){
                             error "pipeline faliur : ${qg.status}"
                     }}
