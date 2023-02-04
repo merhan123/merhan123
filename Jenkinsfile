@@ -33,6 +33,7 @@ pipeline{
                    // sh 'pwd'
                     //sh 'ls -l'
                     //sh '../../gradlew sonarqube'
+                    sh 'chmod +x mvnw'
                     sh './mvnw sonarqube'
 }
                 } 
