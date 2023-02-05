@@ -34,7 +34,7 @@ pipeline{
                  withSonarQubeEnv('sonarqube') {
                     sh 'chmod +x mvnw'
                     sh 'ls -l'
-                    sh 'mvn sonar:sonar'
+                    sh 'mvn clean deploy sonar:sonar'
                    // sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar' 
                      }
                 //    timeout(time: 0.1, unit: 'HOURS' ){
