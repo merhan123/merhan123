@@ -30,9 +30,9 @@ pipeline{
                 sh 'ls -l'
                 script{
                    // withSonarQubeEnv(credentialsId: 'sonarPassword') {
-                   withSonarQubeEnv('sonarqube') {
+                   withSonarQubeEnv(installationName: 'sonarqube') {
                     sh 'chmod +x mvnw'
-                    sh 'mvn sonar:sonar' }
+                    sh './mvnw clean' }
                     timeout(time: 0.1, unit: 'HOURS' ){
                         def qg = waitForQualityGate()
                             if (qg.status != 'Ok'){
