@@ -14,8 +14,9 @@ pipeline{
            //     sh  'mvn clean install'
                 sh 'which java'
                 sh 'java --version'
-                sh 'ls -l'
-                sh 'ls -l target' 
+                sh 'grep -e PATH -e JAVA_HOME'
+              //  sh 'ls -l'
+            //    sh 'ls -l target' 
             }
             
         }
