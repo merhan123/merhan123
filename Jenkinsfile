@@ -11,7 +11,7 @@ pipeline{
                 git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
                 sh 'pwd'
                 sh 'ls -l'
-               // sh  'mvn clean install'
+                sh  'mvn clean install'
                 sh 'ls -l'
                 sh 'ls -l target' 
             }
@@ -35,12 +35,12 @@ pipeline{
                     //sh '../../gradlew sonarqube'
                     sh 'chmod +x mvnw'
                     sh 'mvn sonar:sonar' }
-                    timeout(time: 1, unit: 'HOURS' ){
+                    timeout(time: 0.1, unit: 'HOURS' ){
                         def qg = waitForQualityGate()
                             if (qg.status != 'Ok'){
                             error "pipeline faliur : ${qg.status}"
                     }}
-                    sh 'mvn clean install'
+                   // sh 'mvn clean install'
                     
                  //   sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
 }
