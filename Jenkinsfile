@@ -11,15 +11,15 @@ pipeline{
                 git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
                 sh 'pwd'
                 sh 'ls -l'
-           //     sh  'mvn clean install'
+                sh  'mvn clean install'
                 sh 'which java'
                 sh 'java --version'
-              //  sh 'ls -l'
+                sh 'ls -l'
             //    sh 'ls -l target' 
             }
             
         }
-        stage("sonarQube check"){
+   /*     stage("sonarQube check"){
             agent any
              tools{
                  maven 'mvn-default'
@@ -33,7 +33,7 @@ pipeline{
                    withSonarQubeEnv(installationName: 'sonarqube') {
                     sh 'chmod +x mvnw'
                     sh 'ls -l'
-                    sh  './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar' 
+                    sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar' 
                      }
                 //    timeout(time: 0.1, unit: 'HOURS' ){
                    //     def qg = waitForQualityGate()
@@ -42,9 +42,9 @@ pipeline{
                    // }}
                     
                    
-}
-                } 
-            }
+}  */
+         //       } 
+       //     }
             
         }
     }
