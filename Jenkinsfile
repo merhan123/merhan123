@@ -32,15 +32,16 @@ pipeline{
                    // withSonarQubeEnv(credentialsId: 'sonarPassword') {
                    withSonarQubeEnv(installationName: 'sonarqube') {
                     sh 'chmod +x mvnw'
-                    sh './mvnw clean' }
-                    timeout(time: 0.1, unit: 'HOURS' ){
-                        def qg = waitForQualityGate()
-                            if (qg.status != 'Ok'){
-                            error "pipeline faliur : ${qg.status}"
-                    }}
-                   // sh 'mvn clean install'
+                    sh 'ls -l'
+                    sh  './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar' 
+                     }
+                //    timeout(time: 0.1, unit: 'HOURS' ){
+                   //     def qg = waitForQualityGate()
+                     //       if (qg.status != 'Ok'){
+                       //     error "pipeline faliur : ${qg.status}"
+                   // }}
                     
-                 //   sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
+                   
 }
                 } 
             }
