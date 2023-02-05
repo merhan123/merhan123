@@ -33,6 +33,8 @@ pipeline{
                    withSonarQubeEnv(installationName: 'sonarqube') {
                     sh 'chmod +x mvnw'
                     sh 'ls -l'
+                    sh 'apt-get update && apt-get install dos2unix.'
+                    sh 'dos2unix mvnw'
                     sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar' 
                      }
                 //    timeout(time: 0.1, unit: 'HOURS' ){
