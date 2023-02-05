@@ -11,7 +11,7 @@ pipeline{
                 git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
                 sh 'pwd'
                 sh 'ls -l'
-                sh  'mvn clean install'
+           //     sh  'mvn clean install'
                 sh 'which java'
                 sh 'java --version'
               //  sh 'ls -l'
@@ -31,10 +31,6 @@ pipeline{
                 script{
                    // withSonarQubeEnv(credentialsId: 'sonarPassword') {
                    withSonarQubeEnv('sonarqube') {
-                   // sh 'chmod +x gradlew'
-                   // sh 'pwd'
-                    //sh 'ls -l'
-                    //sh '../../gradlew sonarqube'
                     sh 'chmod +x mvnw'
                     sh 'mvn sonar:sonar' }
                     timeout(time: 0.1, unit: 'HOURS' ){
