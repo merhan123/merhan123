@@ -30,10 +30,11 @@ pipeline{
                 sh 'ls -l'
                 script{
                    // withSonarQubeEnv(credentialsId: 'sonarPassword') {
-                   withSonarQubeEnv(installationName: 'sonarqube') {
+               //    withSonarQubeEnv(installationName: 'sonarqube') {
+                 withSonarQubeEnv('sonarqube') {
                     sh 'chmod +x mvnw'
                     sh 'ls -l'
-                    sh 'sudo apt-get update && sudo apt-get install dos2unix.'
+                    sh 'yum -y install dos2unix.'
                     sh 'dos2unix mvnw'
                     sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar' 
                      }
