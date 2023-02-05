@@ -11,10 +11,10 @@ pipeline{
                 git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
                 sh 'pwd'
                 sh 'ls -l'
-                sh  'mvn clean install'
                 sh 'which java'
                 sh 'java --version'
-                sh 'ls -l'
+                sh  'mvn clean install'
+            
             //    sh 'ls -l target' 
             }
             
