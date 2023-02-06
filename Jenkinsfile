@@ -14,14 +14,14 @@ pipeline{
                 sh 'pwd'
                 sh 'ls -l'
                 sh 'which java'
-                sh 'chmod +x gradlew'
-                sh 'chmod +x mvnw.cmd'
+                sh 'chmod +xu gradlew'
+                sh 'chmod +xu mvnw.cmd'
                 sh 'gradle --version'
                 sh 'pwd'
                  sh 'cd /var/jenkins_home/workspace/spring-petclinic'
                 sh 'java --version'
               //  sh './mvnw.cmd'
-                sh './gradlew '
+                sh './gradlew sonarqube'
                 }
             //    sh 'ls -l target' 
             }
