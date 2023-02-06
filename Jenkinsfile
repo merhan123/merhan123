@@ -21,7 +21,7 @@ pipeline{
                 sh 'cd /var/jenkins_home/workspace/spring-petclinic'
                 sh 'java --version'
               //  sh './mvnw.cmd'
-                sh 'gradle clean package'
+                sh 'gradle clean install'
                 }
             //    sh 'ls -l target' 
             }
