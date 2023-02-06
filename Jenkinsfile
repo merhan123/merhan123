@@ -5,7 +5,7 @@ pipeline{
             agent any
             tools{
                  maven 'mvn-default'
-                 jdk 'jdk-default'
+                // jdk 'jdk-default'
             }
            
             steps{
@@ -15,7 +15,7 @@ pipeline{
                 sh 'which java'
                 sh 'java --version'
                 sh 'chmod +x mvnw'
-                sh  'mvn clean install'
+                sh  'mvn clean'
             
             //    sh 'ls -l target' 
             }
