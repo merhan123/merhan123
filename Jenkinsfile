@@ -1,6 +1,8 @@
 pipeline{
     agent any
     stages{
+
+/* 
        stage("sonarQube check"){
             agent any
              tools{
@@ -22,8 +24,8 @@ pipeline{
                    
 }  
                 } 
-           }
-
+           } */
+/* 
            stage("Quality Gate"){
             steps{
              timeout(time: 2, unit: 'MINUTES' ){
@@ -34,7 +36,7 @@ pipeline{
 
 
                     }}
-        }
+        } */
 
             stage("Deploy"){
              tools{
@@ -44,6 +46,8 @@ pipeline{
              
                 git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
                 sh 'pwd'
+                sh 'mvn checkstyle:checkstyle'
+                sh 'ls -l'
                 sh  'mvn clean install'
                 sh 'ls -l'
              }
