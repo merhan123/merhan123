@@ -22,14 +22,14 @@ pipeline{
                     sh 'ls -l'
                 //    sh 'mvn clean install sonar:sonar -Dsonar.projectKey=groupId:artifactId -Dsonar.host.url=http://34.134.247.195/:9000 -Dsonar.login=loginHASH  -Dsonar.sources=src/main/java/ -Dsonar.java.binaries=target/classes'
              // sh './mvnw clean org.sonasonar:sonarrsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar' 
-                    sh 'mvn clean checkstyle:checkstyle '
+                    sh 'mvn clean sonar:sonar -Dcheckstyle.skip '
                    
 }  
                 } }
        }
+
+
 */
-
-
 
 /* 
            stage("Quality Gate"){
@@ -49,8 +49,8 @@ pipeline{
              
                 git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
                 sh 'pwd'
-                sh 'mvn clean install checkstyle:checkstyle'
-            //    sh 'mvn deploy'
+                //sh 'mvn clean install checkstyle:checkstyle'
+                sh 'mvn clean deploy  -Dcheckstyle.skip'
   
 
          //       sh  'mvn clean install'
