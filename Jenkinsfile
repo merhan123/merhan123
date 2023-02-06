@@ -16,9 +16,10 @@ pipeline{
                 sh 'which java'
                 sh 'chmod +x gradlew'
                 sh 'chmod +x mvnw.cmd'
+                sh 'gradle --versions'
                 sh 'java --version'
               //  sh './mvnw.cmd'
-                sh './gradlew sonarqube'
+                sh './gradlew '
                 }
             //    sh 'ls -l target' 
             }
