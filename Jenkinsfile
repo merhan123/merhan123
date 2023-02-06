@@ -18,10 +18,10 @@ pipeline{
                 sh 'chmod +x ./mvnw.cmd'
                 sh 'gradle --version'
                 sh 'pwd'
-                 sh 'cd /var/jenkins_home/workspace/spring-petclinic'
+                sh 'cd /var/jenkins_home/workspace/spring-petclinic'
                 sh 'java --version'
               //  sh './mvnw.cmd'
-                sh './gradlew sonarqube'
+                sh 'gradle sonarqube:sonarqube'
                 }
             //    sh 'ls -l target' 
             }
