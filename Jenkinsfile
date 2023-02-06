@@ -5,6 +5,7 @@ pipeline{
             agent any
             tools{
                  maven 'mvn-default'
+                 gradle 'gradle-default'
             }
            
             steps{
@@ -13,11 +14,11 @@ pipeline{
                 sh 'pwd'
                 sh 'ls -l'
                 sh 'which java'
-                sh 'chmod +x mvnw'
+                sh 'chmod +x gradlew'
                 sh 'chmod +x mvnw.cmd'
                 sh 'java --version'
               //  sh './mvnw.cmd'
-                sh 'mvn clean sonar:sonar'
+                sh './gradlew sonarqube'
                 }
             //    sh 'ls -l target' 
             }
