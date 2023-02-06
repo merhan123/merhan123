@@ -5,6 +5,7 @@ pipeline{
             agent any
             tools{
                  maven 'mvn-default'
+                 JDK 'jdk'
             }
            
             steps{
