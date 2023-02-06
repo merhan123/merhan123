@@ -34,8 +34,23 @@ pipeline{
 
 
                     }}
-            
         }
+
+            stage("Deploy"){
+             tools{
+                 maven 'mvn-default'
+            }
+            steps{
+             
+                git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
+                sh 'pwd'
+                sh  'mvn clean install'
+                sh 'ls -l'
+             }
+        }
+
+
+
     }
     
 }
