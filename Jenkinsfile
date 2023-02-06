@@ -13,7 +13,7 @@ pipeline{
                 sh 'ls -l'
                 sh 'which java'
                 sh 'java --version'
-            //    sh  'mvn clean install'
+                sh  'mvn clean install'
             
             //    sh 'ls -l target' 
             }
