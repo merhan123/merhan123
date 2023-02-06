@@ -50,7 +50,9 @@ pipeline{
                 git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
                 sh 'pwd'
                 sh 'mvn clean checkstyle:checkstyle'
-                sh 'ls -l'
+                sh 'mvn deploy'
+  
+
          //       sh  'mvn clean install'
                 sh 'ls -l target'
              }
