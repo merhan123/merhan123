@@ -28,6 +28,7 @@ pipeline{
 
            stage("Quality Gate"){
             steps{
+            withSonarQubeEnv('sonarqube') {
              timeout(time: 20, unit: 'MINUTES' ){
                 waitForQualityGate abortPipeline: true
                    //     def qg = waitForQualityGate()
@@ -35,7 +36,7 @@ pipeline{
                        //     error "pipeline faliur : ${qg.status}"
 
 
-                    }}
+                    }}}
         } 
 
             stage("Deploy"){
