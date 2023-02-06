@@ -14,7 +14,7 @@ pipeline{
                 sh 'which java'
                 sh 'java --version'
                 sh 'chmod +x mvnw'
-                sh  'mvn clean install -X'
+                sh  'mvn clean install'
             
             //    sh 'ls -l target' 
             }
