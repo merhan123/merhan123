@@ -16,7 +16,7 @@ pipeline{
                 sh 'which java'
                 sh 'chmod +x gradlew'
                 sh 'chmod +x mvnw.cmd'
-                sh 'gradle --versions'
+                sh 'gradle --version'
                 sh 'java --version'
               //  sh './mvnw.cmd'
                 sh './gradlew '
