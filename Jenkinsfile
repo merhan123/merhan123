@@ -16,8 +16,8 @@ pipeline{
                 sh 'chmod +x mvnw'
                 sh 'chmod +x mvnw.cmd'
                 sh 'java --version'
-                sh './mvnw.cmd'
-                //sh './.mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
+              //  sh './mvnw.cmd'
+                sh './mvnw clean sonar:sonar'
                 }
             //    sh 'ls -l target' 
             }
