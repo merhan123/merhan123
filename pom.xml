@@ -140,9 +140,9 @@
             <version>8.45.1</version>
           </dependency>
           <dependency>
-            <groupId>io.spring.nohttps</groupId>
-            <artifactId>nohttps-checkstyle</artifactId>
-            <version>${nohttps-checkstyle.version}</version>
+            <groupId>io.spring.nohttp</groupId>
+            <artifactId>nohttp-checkstyle</artifactId>
+            <version>${nohttp-checkstyle.version}</version>
           </dependency>
         </dependencies>
         <executions>
