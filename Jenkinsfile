@@ -15,7 +15,7 @@ pipeline{
                 sh 'ls -l'
                 sh 'which java'
                 sh 'chmod +x ./gradlew'
-                sh 'chmod +xu mvnw.cmd'
+                sh 'chmod +x ./mvnw.cmd'
                 sh 'gradle --version'
                 sh 'pwd'
                  sh 'cd /var/jenkins_home/workspace/spring-petclinic'
