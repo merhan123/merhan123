@@ -23,7 +23,7 @@ pipeline{
                      }
                    
 }  
-                } 
+                } }
            
 
            stage("Quality Gate"){
@@ -57,4 +57,4 @@ pipeline{
 
     }
     
-}}
+}
