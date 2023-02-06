@@ -13,11 +13,12 @@ pipeline{
                 script{
                    // withSonarQubeEnv(credentialsId: 'sonarPassword') {
                //    withSonarQubeEnv(installationName: 'sonarqube') {
-                 withSonarQubeEnv('sonarqube') {
+               //  withSonarQubeEnv('sonarqube') {
                     sh 'chmod +x mvnw'
                     sh 'ls -l'
-                    sh 'mvn clean sonar:sonar'
-                     }
+                    sh 'mvn clean'
+                    sh 'mvn package'
+                  //   }
                 //    timeout(time: 0.1, unit: 'HOURS' ){
                    //     def qg = waitForQualityGate()
                      //       if (qg.status != 'Ok'){
