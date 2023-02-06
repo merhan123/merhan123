@@ -16,7 +16,7 @@ pipeline{
                  withSonarQubeEnv('sonarqube') {
                     sh 'chmod +x mvnw'
                     sh 'ls -l'
-                    sh 'mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.8.3:sonar'
+                    sh 'mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
                    // sh './mvnw clean org.sonasonar:sonarrsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar' 
                      }
                    
