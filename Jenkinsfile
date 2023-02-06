@@ -16,8 +16,7 @@ pipeline{
                 sh 'java --version'
                 sh 'chmod +x mvnw'
                 sh  'mvn clean'
-            
-            //    sh 'ls -l target' 
+                sh 'ls -l target' 
             }
             
         }
