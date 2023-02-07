@@ -59,7 +59,27 @@ pipeline{
         }
 
 
+        stage('upload file to nexus'){
+            steps{
+                script{
+                    nexusArtifactUploader artifacts: 
+                    [
+                        [
+                            artifactId: 'libsass-maven-plugin', classifier: '',
+                            file: 'target/spring-petclinic-3.0.0-SNAPSHOT.jar', type: 'jar'
+                            ]
+                            ], 
+                        credentialsId: 'nexus-auth', 
+                        groupId: 'com.gitlab.haynes', 
+                        nexusUrl: '35.226.51.205:31521', 
+                        nexusVersion: 'nexus3', 
+                        protocol: 'http', 
+                        repository: 'http://35.226.51.205:31521/repository/Atos/', 
+                        version: '0.2.26'
+                }
+            }
 
+        }
     
     
     }}
