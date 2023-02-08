@@ -74,18 +74,19 @@ pipeline{
                     nexusArtifactUploader artifacts: 
                     [
                         [
-                            artifactId: 'libsass-maven-plugin', classifier: '',
+                            artifactId: 'spring-petclinic', 
+                            classifier: '', 
                             file: 'target/spring-petclinic-3.0.0-SNAPSHOT.jar', 
                             type: 'jar'
                             ]
                             ], 
-                        credentialsId: 'nexus-auth', 
-                        groupId: 'com.gitlab.haynes', 
-                        nexusUrl: '35.226.51.205:31521', 
-                        nexusVersion: 'nexus3', 
-                        protocol: 'http', 
-                        repository: 'Atos', 
-                        version: '0.2.26'
+                            credentialsId: 'nx-auth', 
+                            groupId: 'org.springframework.samples', 
+                            nexusUrl: '35.226.51.205:31521', 
+                            nexusVersion: 'nexus2', 
+                            protocol: 'http', 
+                            repository: 'Atos', 
+                            version: '3.0.0-SNAPSHOT'
                 }
             }
 
