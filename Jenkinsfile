@@ -27,7 +27,7 @@ pipeline{
                     sh 'ls -l'
                 //    sh 'mvn clean install sonar:sonar -Dsonar.projectKey=groupId:artifactId -Dsonar.host.url=http://34.134.247.195/:9000 -Dsonar.login=loginHASH  -Dsonar.sources=src/main/java/ -Dsonar.java.binaries=target/classes'
              // sh './mvnw clean org.sonasonar:sonarrsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar' 
-                    sh 'mvn -Dmaven.test.failure.ignore=true clean  sonar:sonar -Dcheckstyle.skip '
+              //      sh 'mvn -Dmaven.test.failure.ignore=true clean  sonar:sonar -Dcheckstyle.skip '
                    
 }  
                 } }
