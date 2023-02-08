@@ -61,16 +61,21 @@ pipeline{
 
          //       sh  'mvn clean install'
                 sh 'ls -l target'
+                dir(path:'target'){
+                    stash.name:"spring",
+                    includes:"spring-petclinic-3.0.0-SNAPSHOT*.jar"
+                }
              }
         }
 
 
         stage('upload file to nexus'){
             steps{
-            git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
+                dir(path:'target'){
+                    unstash "spring"
+                }
                 script{
 
-                  
                     nexusArtifactUploader artifacts: 
                      [
                          [
