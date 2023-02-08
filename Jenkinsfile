@@ -61,11 +61,12 @@ pipeline{
 
          //       sh  'mvn clean install'
                 sh 'ls -l target'
+            }
                 dir(path:'target'){
                     stash.name:"spring",
                     includes:"spring-petclinic-3.0.0-SNAPSHOT*.jar"
                 }
-             }
+             
         }
 
 
