@@ -13,7 +13,7 @@ pipeline{
     stages{
          
        stage("sonarQube check"){
-            tools{jdk 'jdk-default'}
+           // tools{jdk 'jdk-default'}
             steps{
                 git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
                 sh 'pwd'
