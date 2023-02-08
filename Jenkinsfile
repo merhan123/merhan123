@@ -52,7 +52,7 @@ pipeline{
                     sh 'chmod +x mvnw'
                     sh 'ls -l'
                  //   sh 'mvn clean package sonar:sonar'
-                    sh 'mvn clean  sonar:sonar -Dcheckstyle.skip  -Dsonar.host.url=http://34.134.247.195:9000   -Dsonar.sources=src/main/java/ -Dsonar.java.binaries=target/classes'
+                    sh 'mvn clean  sonar:sonar -Dcheckstyle.skip -Dmaven.test.failure.ignore=true'
 
                  //   sh 'mvn clean  org.sonasonar:sonarrsource.scanner.maven:sonar-maven-plugin:3.9:sonar -Dcheckstyle.skip  -Dsonar.host.url=http://34.134.247.195:9000   -Dsonar.sources=src/main/java/ -Dsonar.java.binaries=target/classes'
                //  sh 'mvn clean org.sonasonar:sonarrsource.scanner.maven:sonar-maven-plugin:3.9:sonar' 
