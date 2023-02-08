@@ -7,8 +7,8 @@ pipeline{
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "35.226.51.205:31521"
-        NEXUS_REPOSITORY = "http://35.226.51.205:31521/repository/Atos/"
-        NEXUS_CREDENTIAL_ID = "nexus-auth"
+        NEXUS_REPOSITORY = "Atos"
+        NEXUS_CREDENTIAL_ID = "nx-auth"
     }
     stages{
          
@@ -70,30 +70,56 @@ pipeline{
             git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
                 script{
 
-                  //  pom = readMavenPom file: "pom.xml";
-                //    filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
-                   // echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory}"
-                    //artifactPath = filesByGlob[0].path;
-                   // artifactExists = fileExists artifactPath
-                    nexusArtifactUploader artifacts: 
-                    [
-                        [
-                            artifactId: 'spring-petclinic', 
-                            classifier: '', 
-                            file: 'target/spring-petclinic-3.0.0-SNAPSHOT.jar', 
-                            type: 'jar'
-                            ]], 
-                            credentialsId: 'nx-auth', 
-                            groupId: 'org.springframework.samples', 
-                            nexusUrl: '35.226.51.205:31521', 
-                            nexusVersion: 'nexus3', 
-                            protocol: 'http', 
-                            repository: 'Atos', 
-                            version: '3.0.0-SNAPSHOT'
+                  
+                    // nexusArtifactUploader artifacts: 
+                    // [
+                    //     [
+                    //         artifactId: 'spring-petclinic', 
+                    //         classifier: '', 
+                    //         file: 'target/spring-petclinic-3.0.0-SNAPSHOT.jar', 
+                    //         type: 'jar'
+                    //         ]], 
+                    //         credentialsId: 'nx-auth', 
+                    //         groupId: 'org.springframework.samples', 
+                    //         nexusUrl: '35.226.51.205:31521', 
+                    //         nexusVersion: 'nexus3', 
+                    //         protocol: 'http', 
+                    //         repository: 'Atos', 
+                    //         version: '3.0.0-SNAPSHOT'
+                    pom = readMavenPom file: "pom.xml";
+                    filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
+                    echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
+                    artifactPath = filesByGlob[0].path;
+                    artifactExists = fileExists artifactPath;
+                    if(artifactExists) {
+                        echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
+                        nexusArtifactUploader(
+                            nexusVersion: NEXUS_VERSION,
+                            protocol: NEXUS_PROTOCOL,
+                            nexusUrl: NEXUS_URL,
+                            groupId: pom.groupId,
+                            version: pom.version,
+                            repository: NEXUS_REPOSITORY,
+                            credentialsId: NEXUS_CREDENTIAL_ID,
+                            artifacts: [
+                                [artifactId: pom.artifactId,
+                                classifier: '',
+                                file: artifactPath,
+                                type: pom.packaging],
+                                [artifactId: pom.artifactId,
+                                classifier: '',
+                                file: "pom.xml",
+                                type: "pom"]
+                            ]
+                        );
+                    } else {
+                        error "*** File: ${artifactPath}, could not be found";
+                    }
+                }
                 }
             }
 
         }
     
     
-    }}
+    }
