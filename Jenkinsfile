@@ -20,9 +20,9 @@ pipeline{
                 sh 'ls -l'
                // sh 'rm -rf target'
                 script{
-                    withSonarQubeEnv(credentialsId: 'jenkins-sonar1') {
+                   // withSonarQubeEnv(credentialsId: 'jenkins-sonar1') {
                //    withSonarQubeEnv(installationName: 'sonarqube') {
-                // withSonarQubeEnv('sonarqube') {
+                 withSonarQubeEnv('sonarqube') {
                     sh 'chmod +x mvnw'
                     sh 'ls -l'
                  //   sh 'mvn clean package sonar:sonar'
