@@ -70,7 +70,7 @@ pipeline{
                    // echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory}"
                     //artifactPath = filesByGlob[0].path;
                    // artifactExists = fileExists artifactPath
-                    
+                    ls ~/.m/
                     nexusArtifactUploader artifacts: 
                     [
                         [
