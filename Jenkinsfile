@@ -67,7 +67,9 @@ pipeline{
 
         stage('upload file to nexus'){
             steps{
+            git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
                 script{
+
                   //  pom = readMavenPom file: "pom.xml";
                 //    filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
                    // echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory}"
