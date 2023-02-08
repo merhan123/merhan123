@@ -91,7 +91,7 @@ pipeline{
                              nexusUrl: '35.226.51.205:31521', 
                              nexusVersion: 'nexus3', 
                              protocol: 'http', 
-                             repository: 'Atos', 
+                             repository: 'demoapp', 
                             version: '3.0.0-SNAPSHOT'
                     // pom = readMavenPom file: "pom.xml";
                     // filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
