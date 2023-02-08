@@ -81,7 +81,7 @@ pipeline{
                     nexusArtifactUploader artifacts: 
                      [
                          [
-                             artifactId: 'spring-petclinic', 
+                             artifactId: '', 
                              classifier: '', 
                              file: 'target/spring-petclinic-3.0.0-SNAPSHOT.jar', 
                              type: 'jar'
