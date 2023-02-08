@@ -87,7 +87,7 @@ pipeline{
                              type: 'jar'
                              ]], 
                              credentialsId: 'nx-auth', 
-                             groupId: '', 
+                             groupId: 'org.springframework.samples', 
                              nexusUrl: '35.226.51.205:31521', 
                              nexusVersion: 'nexus3', 
                              protocol: 'http', 
