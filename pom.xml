@@ -4,7 +4,13 @@
   <groupId>org.springframework.samples</groupId>
   <artifactId>spring-petclinic</artifactId>
   <version>3.0.0-SNAPSHOT</version>
-
+  <servers>
+        <server>
+            <id>http://35.226.51.205:31521/repository/Atos</id>
+            <username>test</username>
+            <password>1234</password>
+        </server>
+  </servers>
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
