@@ -84,7 +84,7 @@ pipeline{
                         nexusUrl: '35.226.51.205:31521', 
                         nexusVersion: 'nexus3', 
                         protocol: 'http', 
-                        repository: 'http://35.226.51.205:31521/repository/Atos/', 
+                        repository: 'Atos', 
                         version: '0.2.26'
                 }
             }
