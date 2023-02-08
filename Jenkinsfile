@@ -63,8 +63,8 @@ pipeline{
                 sh 'ls -l target'
             }
                 dir(path:'target'){
-                    stash.name:"spring",
-                    includes:"spring-petclinic-3.0.0-SNAPSHOT*.jar"
+                    stash name: "spring",
+                    includes: "spring-petclinic-3.0.0-SNAPSHOT*.jar"
                 }
              
         }
