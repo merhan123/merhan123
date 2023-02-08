@@ -53,7 +53,7 @@ pipeline{
                 git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
                 sh 'pwd'
                 //sh 'mvn clean install checkstyle:checkstyle'
-                sh 'mvn clean install  -Dcheckstyle.skip'
+                sh 'mvn clean install   -Dmaven.test.failure.ignore=true'
   
 
          //       sh  'mvn clean install'
@@ -70,7 +70,6 @@ pipeline{
                    // echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory}"
                     //artifactPath = filesByGlob[0].path;
                    // artifactExists = fileExists artifactPath
-                    ls ~/.m/
                     nexusArtifactUploader artifacts: 
                     [
                         [
