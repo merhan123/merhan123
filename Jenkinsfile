@@ -100,16 +100,17 @@ pipeline{
             }
 
             stage('build docker image'){
-
+            
             steps{
                 dir(path:'target'){
                     unstash "spring"
                 }
                 script{
+                    withTool("docker"){
                   //dockerImage = docker.build imagename
                   sh 'docker build -t merhan/spring-petclinic:latest .'
                 }
-                }
+                }}
             }
 
         }
