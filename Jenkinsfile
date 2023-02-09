@@ -1,7 +1,7 @@
 pipeline{
     agent any
     tools {
-        maven "mvn-default"
+        maven "mvn-default" ,
         Docker "docker-default"
     }
     environment {
