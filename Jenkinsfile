@@ -2,6 +2,7 @@ pipeline{
     agent any
     tools {
         maven "mvn-default"
+        docker "docker-default"
     }
     environment {
         NEXUS_VERSION = "nexus3"
