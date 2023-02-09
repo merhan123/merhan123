@@ -100,7 +100,7 @@ pipeline{
             }
 
             stage('build docker image'){
-            tools{Docker "docker"}
+           // tools{Docker "docker"}
             steps{
                 dir(path:'target'){
                     unstash "spring"
