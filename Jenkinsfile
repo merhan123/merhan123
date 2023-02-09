@@ -2,7 +2,7 @@ pipeline{
     agent any
     tools {
         maven "mvn-default" 
-        Docker "docker"
+  //      Docker "docker"
     }
     environment {
         NEXUS_VERSION = "nexus3"
@@ -51,7 +51,10 @@ pipeline{
         } */
 
             stage("Deploy"){
-             
+            agent{
+                docker {
+        	image 'maven:3.5.0'
+        }}
             steps{
              
                 git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
