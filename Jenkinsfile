@@ -51,10 +51,7 @@ pipeline{
         } */
 
             stage("Deploy"){
-            agent{
-                docker {
-        	image 'maven:3.5.0'
-        }}
+            
             steps{
              
                 git branch: 'devops', url: 'https://github.com/merhan123/merhan123.git'
@@ -73,20 +70,6 @@ pipeline{
                
              
         }
-
-
-        stage('build docker image'){
-
-            steps{
-                dir(path:'target'){
-                    unstash "spring"
-                }
-                script{
-                  //dockerImage = docker.build imagename
-                  sh 'docker build -t merhan/spring-petclinic:latest .'
-                }
-                }
-            }
 
 
             stage('upload file to nexus'){
@@ -112,6 +95,19 @@ pipeline{
                              repository: 'demoapp', 
                             version: '3.0.1'
                      
+                }
+                }
+            }
+
+            stage('build docker image'){
+
+            steps{
+                dir(path:'target'){
+                    unstash "spring"
+                }
+                script{
+                  //dockerImage = docker.build imagename
+                  sh 'docker build -t merhan/spring-petclinic:latest .'
                 }
                 }
             }
