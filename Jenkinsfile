@@ -113,7 +113,8 @@ pipeline{
                     // testImage.inside {
                     // sh 'make test'
                     //     }
-                 dockerImage = docker.build(imagename)
+                    script{
+                 dockerImage = docker.build(imagename)}
                  // sh 'docker build -t merhan/spring-petclinic:latest .'
                 }
                 }
