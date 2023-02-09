@@ -1,7 +1,7 @@
 pipeline{
     agent any
     tools {
-  //      maven "mvn-default" 
+        maven "mvn-default" 
         Docker "docker"
     }
     environment {
@@ -73,12 +73,14 @@ pipeline{
 
 
         stage('build docker image'){
+
             steps{
                 dir(path:'target'){
                     unstash "spring"
                 }
                 script{
-                  dockerImage = docker.build imagename
+                  //dockerImage = docker.build imagename
+                  sh 'docker build -t merhan/spring-petclinic:latest .'
                 }
                 }
             }
