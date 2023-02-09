@@ -105,8 +105,8 @@ pipeline{
                 dir(path:'target'){
                     unstash "spring"
                 }
-                script{
-                  dockerImage = docker.build imagename
+                docker{
+                  dockerImage = docker.build(imagename}
                  // sh 'docker build -t merhan/spring-petclinic:latest .'
                 }
                 }
