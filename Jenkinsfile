@@ -9,6 +9,8 @@ pipeline{
         NEXUS_URL = "35.226.51.205:31521"
         NEXUS_REPOSITORY = "Atos"
         NEXUS_CREDENTIAL_ID = "nx-auth"
+        imagename = "springclinic"
+        dockerImage = ''
     }
     stages{
          
@@ -25,11 +27,9 @@ pipeline{
                  withSonarQubeEnv('sonarqube') {
                     sh 'chmod +x mvnw'
                     sh 'ls -l'
-                 //   sh 'mvn clean package sonar:sonar'
-                    sh 'mvn clean  package sonar:sonar -Dcheckstyle.skip  -Dsonar.sources=src/main/java/ -Dsonar.java.binaries=target/classes'
+  //                  sh 'mvn clean  package sonar:sonar -Dcheckstyle.skip  -Dsonar.sources=src/main/java/ -Dsonar.java.binaries=target/classes'
                    
                  //   sh 'mvn clean  org.sonasonar:sonarrsource.scanner.maven:sonar-maven-plugin:3.9:sonar -Dcheckstyle.skip  -Dsonar.host.url=http://34.134.247.195:9000   -Dsonar.sources=src/main/java/ -Dsonar.java.binaries=target/classes'
-               //  sh 'mvn clean org.sonasonar:sonarrsource.scanner.maven:sonar-maven-plugin:3.9:sonar' 
               //      sh 'mvn -Dmaven.test.failure.ignore=true clean  sonar:sonar -Dcheckstyle.skip '
                    
 }  
@@ -71,7 +71,19 @@ pipeline{
         }
 
 
-        stage('upload file to nexus'){
+        stage('build docker image'){
+            steps{
+                dir(path:'target'){
+                    unstash "spring"
+                }
+                script{
+                  dockerImage = docker.build imagename
+                }
+                }
+            }
+
+
+            stage('upload file to nexus'){
             steps{
                 dir(path:'target'){
                     unstash "spring"
@@ -93,35 +105,7 @@ pipeline{
                              protocol: 'http', 
                              repository: 'demoapp', 
                             version: '3.0.1'
-                    // pom = readMavenPom file: "pom.xml";
-                    // filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
-                    // echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
-                    // artifactPath = filesByGlob[0].path;
-                    // artifactExists = fileExists artifactPath;
-                    // if(artifactExists) {
-                    //     echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
-                    //     nexusArtifactUploader(
-                    //         nexusVersion: NEXUS_VERSION,
-                    //         protocol: NEXUS_PROTOCOL,
-                    //         nexusUrl: NEXUS_URL,
-                    //         groupId: pom.groupId,
-                    //         version: pom.version,
-                    //         repository: NEXUS_REPOSITORY,
-                    //         credentialsId: NEXUS_CREDENTIAL_ID,
-                    //         artifacts: [
-                    //             [artifactId: pom.artifactId,
-                    //             classifier: '',
-                    //             file: artifactPath,
-                    //             type: pom.packaging],
-                    //             [artifactId: pom.artifactId,
-                    //             classifier: '',
-                    //             file: "pom.xml",
-                    //             type: "pom"]
-                    //         ]
-                    //     );
-                    // } else {
-                    //     error "*** File: ${artifactPath}, could not be found";
-                    // }
+                     
                 }
                 }
             }
