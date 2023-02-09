@@ -106,13 +106,14 @@ pipeline{
                     unstash "spring"
                 }
                  dockerfile {
-                    filename 'Dockerfile'
-                    dir '.'
-              //      label 'my-defined-label'
-              //      additionalBuildArgs  '--build-arg version=1.0.2'
-              //      args '-v /tmp:/tmp'
-    }
-                //  dockerImage = docker.build(imagename)
+                    filename 'Dockerfile.build'
+                    dir '.'    }
+
+                    // def testImage = docker.build(imagename, "./Dockerfile")
+                    // testImage.inside {
+                    // sh 'make test'
+                    //     }
+                 dockerImage = docker.build(imagename)
                  // sh 'docker build -t merhan/spring-petclinic:latest .'
                 }
                 }
