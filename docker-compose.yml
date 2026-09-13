@@ -4,7 +4,7 @@ services:
   mysql:
     image: mysql:5.7
     ports:
-      - "3306:3306"
+      - "127.0.0.1:3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
@@ -16,7 +16,7 @@ services:
   postgres:
     image: postgres:14.1
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
     environment:
       - POSTGRES_PASSWORD=petclinic
       - POSTGRES_USER=petclinic
